@@ -6,11 +6,20 @@
 	<body>
 		<ul></ul>
 		<form action = ''>
-			<input/><button>send</button>
+			<input id = 'msg'/><button>send</button>
 		</form>
-		<script src="/socket.io/socket.io.js"></script>
+		<script src='/socket.io/socket.io.js'></script>
+		<script src='https://code.jquery.com/jquery-1.11.1.js'></script>
 		<script>
-			var socket = io();
+			$(function() {
+				var socket = io();
+				$('form').submit(function(e) {
+					e.preventDefault();
+					socket.emit('chat message', $('#msg').val());
+					$('#msg').val('');
+					return false;
+				});
+			});	
 		</script>
 	</body>
 </html>

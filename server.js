@@ -11,6 +11,7 @@ socket_io.on('connection', function(socket) {
 
 	socket.on('chat message', function(message) {
 		console.log('message: ' + message);
+		socket_io.emit('chat message', message);
 	});
 
 	socket.on('disconnect', function() {

@@ -2,6 +2,8 @@ var app = require('express')();
 var  http = require('http').Server(app)
 var socket_io = require('socket.io')(http);
 
+//expose port 3000 with ./ngrok http 3000 and then give link
+
 app.get('/', function(request, response) {
 	response.sendFile(__dirname + '/index.html');
 });
@@ -21,5 +23,4 @@ socket_io.on('connection', function(socket) {
 
 http.listen(3000, function() {
 	console.log('listening on *:3000');
-})
-;
+});
